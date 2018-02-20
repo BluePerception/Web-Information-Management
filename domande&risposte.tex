@@ -1,0 +1,168 @@
+\documentclass[10pt,                    % corpo del font principale
+               a4paper,                 % carta A4
+               twoside,                 % impagina per fronte-retro
+               openright,               % inizio capitoli a destra
+               english,                 
+               italian,                 
+]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{lmodern}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\paragraph{Domande sul motore di ricerca} \mbox{}\\
+\begin{itemize}
+\item \textbf{Cos'è lo spam index?} \\
+Lo spamdex è l'insieme di attività svolte con lo scopo di far sì che un
+sito sia indicizzato dal motore di ricerca e occupi le posizioni più alte 
+della SERP (Search Engine Results Page).
+Lo spam index è conosciuto anche come SEO (Search Engine Optimization) o SEP
+(Search Engine Positioning). Quando si effettua una ricerca, ad ogni pagina
+viene assegnato un punteggio, punteggio calcolato in base a due componenti: 
+quella testuale (data dal TFIDF) e da quella ipertestuale. Il TFIDF(Term 
+Frequency Inverse Document frequency) è il risultato del prodotto del TF per 
+il IDF. Per calcolare il TF, si calcolala percentuale di occorenza di una 
+parola in una pagina, per esempio se ci troviamo davanti a una pagina web 
+formata da 100 parole e ricerchiamo la parola "pippo" che ricorre 5 volte, 
+avremo un TF pari al 5\%. Risulta ovvio che articoli e preposizioni avranno 
+un TF maggiore rispetto ad altre parole poichè sono di collegamento e non di 
+contenuto.
+L'IDF,invece, calcola l'inverso della frequenza della parola nell'insieme dei
+nostri documenti in scala logaritmica. Quindi, per esempio, su 1000 pagine
+l'articolo "il" appare in 980 pagine e risulta un TF=98\% mentre il
+IDF=log(1/0,98\%)=0,008. Invece, se su 1000 parole la parola "pippo" ha il
+10\% di frequenza il suo IDF sarà uguale a 1. Risulta chiaro come più rara è
+la parola e più è alto il bonus.
+Dando una definizione semplificata: un motore di ricerca prende tutte le 
+pagine contententi la parola cercata e calcola di ognuna il TFIDF, se si 
+ricercano più parole, si sommano i TFIDF di tutte le parole ricercate. \\
+
+\item \textbf{Tecniche per aumentare il posizionamento} \\
+Per aumentare il posizionamento, si deve cercare di aumentare il TFIDF delle 
+parole chiave del sito. Per fare ciò, esistono varie tecniche sul dove 
+posizionare queste keywords:
+\begin{itemize}
+\item \textbf{Body spam}: si inseriscono le parole nel body della pagina
+HTML, è efficiente ma svantaggia la lettura per l'utente;
+\item \textbf{Title spam}: si inseriscono le parole chiave nei titoli della 
+pagina (tag title), il contenuto viene modificato molto meno;
+\item \textbf{Meta tag spam}: le keywords vengono inserite in appositi tag 
+html (i meta, appunto) che descrivono a keyword la pagina. Il vantaggio 
+principale è che il contenuto non viene modificato, ma i motori di ricerca 
+odierni li ignorano per l'intenso sfruttamento.
+\item \textbf{Anchor text spam}: le parole chiavi vengono inserite nel testo 
+dei link e il punteggio assegnato rispetto alle comuni parole è maggiore, 
+anche la pagina di destinazione riceve dei benefici in termini di punteggio 
+poichè viene aumentato.
+\item \textbf{URL spam}: le parole chiavi si trovano nell'indirizzo della 
+pagina stessa e anche'essi ricevono dei punti bonus rispetto a comuni parole 
+nel testo (come per l'anchor text spam).  
+\end{itemize}
+
+\item \textbf{Quali tecniche vengono utilizzate per inserire le keywords} \\
+Le parole chiavi posso venire inserite in diversi modi, per esempio:
+\begin{itemize}
+\item \textbf{Repetition}: la keyword viene ripetuta stando attenti al suo 
+TFIDF. Questa tecnica è facile da individuare dai motori di ricerca che 
+possono penalizzare il punteggio della pagina.
+\item \textbf{Dumping}: vengono inseriti moltissimi termini poco usati anche 
+se questi non sono inerenti al testo,risulta efficace contro quelle queries  
+che includono termini relativamente rari e poco chiari: per queste queries è 
+probabile che solo un paio di pagine siano rilevanti, così anche una pagina  
+spam con basso livello di rilevanza/importanza potrà apparire tra i risultati 
+migliori.
+\item \textbf{Weaving}: inserisco nel mio sito pezzi di altri siti web in cui 
+sono inserite le nostre keywords in modo random, creando un contenuto più 
+interessante e valutato positivamente dai motori di ricerca che assegnaranno 
+al sito un punteggio più alto in questo modo.
+\item \textbf{Stitching}: viene fatto il past\&copy da siti differenti e si 
+assembla il tutto ottenendo un contenuto rilevante. Più argomenti diversi 
+danno inoltre un bonus globale e i SE fanno fatica a capire se il contenuto è 
+copiato.
+\item \textbf{Broadening}: inseriscono non solo le keywords, ma anche i 
+sinonimi, le parole simili e frasi correlate. Non solo per coprire le 
+richieste degli utenti, ma anche per sfruttare la tecnica di somiglia dei 
+motori di ricerca così da ottenere bonus aggiuntivi. 
+\end{itemize}
+ 
+\item \textbf{Spiegare il problema e le soluzioni al term spamming} \\
+Usare lo spamdex per l'utente non è molto gradevole e crea disapprovazione.
+Per ovviare a questo problema, vengono utilizzate varie tecniche:
+\begin{itemize}
+\item \textbf{Content hiding}: il contenuto potenziante è nascosto all'utente 
+e solo i motori di ricerca lo vedono.
+\item \textbf{Redirection}: detta anche tecnica 302, consiste nel potenziare 
+una pagina che sarà costituita con soli fini di posizionamento che indirizza
+alla vera pagina. Così gli utenti vedranno la vera pagina studiata per loro 
+mentre i SE si fermeranno a leggere la prima. Questa tecnica funziona solo 
+con javascript poichè i SE riconoscono il meta che reindirizza mentre 
+utilizzando js il meta verrà aggiunto dinamicamente e i SE non si 
+accorgeranno di questo in quanto non eseguono il codice. C'è da dire che i SE 
+odierni riconoscono questa tecnica, quindi per ingannarli è sufficiente 
+offuscare un po' il codice.
+\item \textbf{Cloaking}: è una specie di redirection che controlla se la 
+pagina è richiesta da un utente o da un motore di ricerca e a seconda della
+risposta ricevuta viene presentata una pagina apposita per il bot e una per 
+l'utente. È una tecnica difficile da scoprire e per questo se il motore di 
+ricerca scopre che si sta utilizzando questa tecnica, si viene bannati per 
+un periodo.
+\end{itemize}
+
+\item \textbf{Cos'è il pagerank} \\
+Per calcolare il punteggio di una pagina, viene valutato il punteggio 
+relativo al pagerank, ovvero l'algoritmo assegna un peso numerico ad ogni 
+elemento di un collegamento ipertestuale presente nel sito. ???
+DA FINIRE CHE NON CAPISCO UN CAZZO
+
+\end{itemize}
+
+\paragraph{Web semantico} \mbox{}\\
+\begin{itemize}
+\item \textbf{Scrivere cos'è, pro e contro dell'RDF} \\
+Il modello RDF(Resource Description Framework) è un framework comune che 
+descrive metadati, relazioni e concetti interoperabili, ovvero permette lo
+scambio di informazioni senza necessità di traduzioni in linguaggi. Si basa 
+su una grammatica di base semplice: soggetto-predicato-complemento oggetto.
+Questi tre elementi possono contenere due diversi tipi di dati: URI oppure 
+stringhe letterali, che compongono la struttura linguistica e logica più 
+semplice. L'RDF può essere rappresentato come un grafo e può essere 
+rappresentato in due differenti modi: attraverso XML utilizzandone la 
+struttura per alzare la complessità e arricchire il significato oppure 
+attraverso le N-TRIPLE utilizzando le triplette "soggetto-predicato-comp. 
+oggetto". Quest'ultimo è molto più semplice dato che è stato appositamente
+fatto per RDF. Per integrare RDF con il web, si è utilizzato XHTML2 con cui 
+viene introdotto RDFa che aggiunge gli attributi about(il soggetto) e 
+property(il verbo) mentre il contenuto è il complemento oggetto.
+Usando RDF, dove quindi le informazioni vengono rappresentate utilizzando 
+i grafi, funziona molto bene l'aggregazione: unendo due grafi di conoscenza 
+si genera un grafo creato tramite collegamenti automatici dei nomi del 
+web(URI). Grazie a questa proprietà, RDF risulta migliore rispetto ai 
+dialetti XML. Funzionano bene anche la reificazione, ovvero si riduce ad un
+oggetto una asserzione, ottenendo una diversificazione di livelli e 
+garantendo la monotonicità, cioè se ci si fida dell'insieme allora sono 
+giusti anche i singoli pezzi che lo contengono; i contenitori, concetti 
+logici di AND e OR; le variabili, oggetti logici non specificati; e la ]
+monotonicità, come detto precedentemente, preso un grafo, se l'informazione
+espresso in esso è vera allora tutti i sotto-grafi sono veri.
+Inoltre, più struttura permette una maggiore integrità e una maggiore 
+deduzione: se ho una classe che contiene un oggetto specifico, si può dedurre
+che questo oggetto specifico è di tale classe anche se non è esplicitamente 
+scritto.
+
+\item \textbf{RDF-schema} \\
+L'RDF-schema è lo standard che permette il supporto di ontologie, per dare 
+informazioni più semplici vado quindi a fare una classificazione diminuendo 
+così la complessità. La struttura informativa degli oggetti è data da: class, 
+subClassOf e individual(concetto di individuo), mentre per i verbi abbiamo a 
+disposizione property(la relazione, il verbo), subPropertyOf, Domain(tipo di 
+relazione che delinea il verbo), range(dove la proprietà è applicata).
+Grazie a questi strumenti possiamo dare informazione e categorizzarla 
+\end{itemize}
+
+\end{document}
