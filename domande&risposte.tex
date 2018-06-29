@@ -1,4 +1,4 @@
-\documentclass[10pt,                    % corpo del font principale
+ \documentclass[10pt,                    % corpo del font principale
                a4paper,                 % carta A4
                twoside,                 % impagina per fronte-retro
                openright,               % inizio capitoli a destra
@@ -13,10 +13,35 @@
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{hyperref}
 
 \begin{document}
 
-\paragraph{Domande sul motore di ricerca} \mbox{}\\
+\paragraph{Comportamento degli utenti} \mbox{}\\
+\begin{itemize}
+\item \textbf{Legge di Fitts} \\
+La legge di Fitts viene usata per calcolare il tempo impiegato per puntare
+un obiettivo (che può essere inteso come un'area o un bottone), partendo
+da una certa posizione e terminando sopra di esso, in base alla distanza 
+dell'oggetto e alla dimensione di questo oggetto. In altre parole, più 
+grande e vicino è l'oggetto e più veloce sarà lo spostamento sopra di questo.
+La formula è così espressa: $T=a+b\cdot\log_{2}\left(1+\frac{D}{W} \right)$ dove
+\begin{itemize}
+\item T: è il tempo medio impiegato per concludere il movimento;
+\item a: è il tempo costante impiegato dall'essere umano per cominciare a 
+concludere l'azione;
+\item b: è la costante che dipende dagli strumenti utilizzati e dall'utente;
+\item D: distanza dal punto iniziale alla zona obiettivo;
+\item W: ampiezza della zona obiettivo.
+\end{itemize}
+L'applicazione più efficiente di questa legge si verifica quando con il cursore
+attiviamo un menù contestuale: il punto più rapido in cui si trova è quello in cui
+c'è già il puntatore.
+Altre aree "magiche" sono i bordi e gli angoli.
+Per ulteriori approfondimenti, leggere qui: \url{http://www.usabile.it/272004.htm}
+
+\end{itemize}
+\paragraph{Visibilità} \mbox{}\\
 \begin{itemize}
 \item \textbf{Cos'è lo spam index?} \\
 Lo spamdex è l'insieme di attività svolte con lo scopo di far sì che un
@@ -116,9 +141,74 @@ un periodo.
 
 \item \textbf{Cos'è il pagerank} \\
 Per calcolare il punteggio di una pagina, viene valutato il punteggio 
-relativo al pagerank, ovvero l'algoritmo assegna un peso numerico ad ogni 
-elemento di un collegamento ipertestuale presente nel sito. ???
-DA FINIRE CHE NON CAPISCO UN CAZZO
+relativo al pagerank: ovvero l'algoritmo di pagerank assegna un peso numerico ad 
+ogni elemento di un collegamento ipertestuale presente nel sito.Per calcolare 
+questo valore si utilizza la formula: $\pi_{v}=\sum_{(w,v)\in E} 
+\left(\frac{\pi_{w}}{d_{w}}\right)$ dove
+\begin{itemize}
+\item $w,v$ è un link da w a v;
+\item $d_{w}$ è il numero di link uscenti;
+\end{itemize}
+Quindi, all'aumentare del numero dei link complessivi dei siti che puntano alla 
+nostra pagina, il pagerank aumenta e lo si può vedere come il numero delle
+probabilità di entrare nel nostro sito. C'è da tenere in considerazione anche
+il fattore "random surfer": si fanno navigare questi random surfer, chiamati anche
+"spider", che raccolgono dati su cui calcolare il pagerank. Esistono però dei problemi:
+\begin{itemize}
+\item \textbf{Spider taps}: nel caso in cui uno spider rimanere intrappolato dentro un
+sito in cui le pagine continuano a indirizzare ad altre pagine in un ciclo infinito 
+(esempio: calendario)
+\item \textbf{Island}: ci sono casi in cui alcuni pezzi di rete rimangono isolati dagli 
+altri e gli spider non hanno alcun modo per passare, quindi si generano infiniti valori 
+diversi di pagerank oppure nessun valore di pagerank.
+\end{itemize}
+Per risolvere a questi problemi, la formula è stata modificata aggiungendo il "teletrasporto":
+$\pi_{v}=(1- \epsilon)\cdot(\sum_{(w,v)\in E}\left(\frac{\pi_{w}}{d_{w}}\right))+ \left(\frac{\epsilon}{N}\right) $
+In pratica si è aumentata la casualità e ora il random surfer ha anche un dado e con
+una certa probabilità effettua il teletrasporto in un'altra pagina.
+Nonostante ciò, questa formula non risolve il problema delle dead ends.
+
+\item \textbf{Come migliorare il pagerank?}
+Per migliorare il pagerank con l'uso del teletrasporto, ci sono due fattori importanti:
+inlink e outlink. Infatti, per aumentare il pagerank di una pagina dobbiamo fare in modo
+di aumentare i link entranti, ovvero avere un elevato numero di siti che puntano a quella 
+pagina. Per fare ciò, esistono diverse tecniche:
+\begin{itemize}
+\item Infiltration: infiltrarsi in altri siti e mettere link alla pagina da potenziare;
+\item Honey pot: creare contenuto appetibile e utile che riceve link (modo giusto di aumentare
+il pagerank);
+\item Link exchange: allearsi con altri siti per scambiarsi lin;
+\item Resurrection: acquistare domini defunti con pagerank molto alto, infatti il
+pagerank non muore mai e rimane collegato al dominio, oltre al fatto che l'età del 
+dominio conta come bonus
+\end{itemize}
+Per quanto riguarda gli outlink, quando viene posizionato un link uscente dalla pagina
+un po' di flusso di pagerank esce dalla pagina, ma ciò non significa che non possa
+aumentare il pagerank della mia pagina. Infatti posso utilizzare molte tecniche per
+aumentare il pagerank, sia utilizzando gli inlink che gli outlink.
+
+
+
+\item \textbf{Spam farm} \\
+La spam farm è una tecnica che viene utilizzata per aumentare il pagerank 
+di un sito. Con spam farm si indicano le strutture che raccolgono link a 
+pagine web spam permettendo così l'aumento di pagerank di altri siti che 
+risulteranno avere un elevato numero di link entranti. Una spam farm ottimale
+consiste singola consiste in una pagina o in più pagine, pagine target, puntate 
+da link bidirezionali puntate da altre pagine, pagine potenzianti. Il modo 
+migliore per sfruttare le spam farm è farlo tramite alleanze con altri siti. Posso
+avere:
+\begin{itemize}
+\item Alleanze profonde, in cui le pagine target distribuiscono il flusso sulle 
+pagine potenzianti dell'altro sito(tutto punta a tutto, link bidirezionali);
+\item Alleanza superficiale, le pagine target dei due siti sono connesse con link;
+\item Alleanze ring, alleanza che comprende più di due siti, le pagine target 
+indicizzano in un percorso circolare la pagina target successiva creando una sorta
+di anello;
+\item Alleanza complete core, il potenziamento è simile a quello dell'alleanza ring,
+ma possiede una struttura bidirezionale che la rende più vantaggiosa. Le pagine target
+hanno link entrate e uscenti verso le duepagine target più vicine.
+\end{itemize}
 
 \end{itemize}
 

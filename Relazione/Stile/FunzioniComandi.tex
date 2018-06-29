@@ -1,0 +1,42 @@
+% Creazione della copertina
+\newcommand{\copertina}{
+  \newgeometry{top=4cm}
+  
+  \begin{titlepage}
+  \begin{center}
+
+  \begin{center}
+  	\centerline{\includegraphics[scale=0.07]{Images/uni.png}} 
+    \textbf{Università degli Studi di Padova \\
+    Corso di laurea in Informatica}
+    	
+    
+  \end{center}
+  
+  \vspace{1cm}
+
+  \begin{Huge}
+    \textbf{\Titolo{}} \\
+  \end{Huge}
+
+
+  \begin{center}
+
+  \centerline{\includegraphics[scale=0.7]{Images/logo-copertina.jpg}}
+	
+  \end{center}
+  \vspace{9pt}  
+  
+  \begin{large}
+  \Rel
+  \end{large}	  
+  
+  \vspace{15pt}
+
+  \end{center}
+  \end{titlepage}
+  
+  \restoregeometry
+}
+
+\newcommand{\code}[1]{\flextt{\texttt{#1}}}
